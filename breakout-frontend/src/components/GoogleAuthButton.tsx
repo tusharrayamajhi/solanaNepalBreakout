@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import API_URL from "@/utils/API_URL";
+import API_URL, { NEXT_PUBLIC_GOOGLE_CLIENT_ID } from "@/utils/API_URL";
 
 const GoogleAuthButton = () => {
   const navigate = useNavigate();
@@ -10,8 +10,7 @@ const GoogleAuthButton = () => {
     /* global google */
     // @ts-ignore
     google.accounts.id.initialize({
-      client_id:
-        "",
+      client_id:NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: async (response: any) => {
         try {
           const { data } = await axios.post(`${API_URL}auth/google`, {

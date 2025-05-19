@@ -9,6 +9,7 @@ import {
   clusterApiUrl,
 } from "@solana/web3.js";
 import { useParams, useNavigate } from "react-router-dom";
+import API_URL from "@/utils/API_URL";
 
 interface PaymentData {
   recipient: string;
@@ -31,7 +32,7 @@ export default function SolanaRedirect() {
 
     const fetchPaymentData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/solana/${orderId}/${userId}/${businessId}`);
+        const res = await fetch(`${API_URL}solana/${orderId}/${userId}/${businessId}`);
         const data = await res.json();
 
         if (res.ok) {
